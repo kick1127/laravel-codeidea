@@ -1,0 +1,149 @@
+@charset "utf-8";
+
+
+/*____________________________ FORM ____________________________*/
+
+
+/* size */
+input:not([type="checkbox"]):not([type="radio"]):not(.search), select{padding-left:15px;padding-right:15px;height:74px;font-size:22px;font-weight:400;font-family:'NanumSquare', sans-serif;}
+input:not([type="checkbox"]):not([type="radio"]).mini, .mini select{height:32px;font-size:15px;padding:0 10px;}
+input:not([type="checkbox"]):not([type="radio"]).small, .small select{height:48px;font-size:16px;padding:0 15px;}
+input:not([type="checkbox"]):not([type="radio"]).large, .large select{padding-left:15px;padding-right:15px;height:60px;border-width:2px;}
+
+input{vertical-align:middle;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+input:not([type="checkbox"]):not([type="radio"]), select{
+	display:inline-block;
+	vertical-align:middle;
+	*overflow:visible;
+	padding-top:2px;
+	color:#151515;
+	border:1px solid #000;
+	border-radius:0;
+	background-color:#fff;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	-ms-appearance:none;
+	appearance:none;
+	position:relative;
+	z-index:3;
+	}
+input:-moz-placeholder, textarea:-moz-placeholder {color:#bfbfbf;font-weight:300;}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {color:#bfbfbf;font-weight:300;}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {color:#bfbfbf;font-weight:300;}
+input::-moz-focus-inner, button::-moz-focus-inner{border:0;padding:0;}
+
+textarea{padding:15px;font-size:20px;font-weight:400;line-height:1.4em;color:#151515;border-radius:0;border:1px solid #000;font-family:'NanumSquare', sans-serif;}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="number"]:focus, input[type="url"]:focus, textarea:focus{border-color:rgba(0,0,0,0.65);box-shadow:0 7px 7px rgba(0,0,0,0.06);}
+
+
+
+.myform{display:inline-flex;align-items:stretch;position:relative;z-index:1;font-size:17px;font-weight:400;cursor:pointer;}
+
+
+
+
+
+
+/*──────────────── Radio & Checkbox (mobile)────────────────*/
+input[type="checkbox"], input[type="radio"] {display:none;}
+input[type="checkbox"] + span, input[type="radio"] + span{cursor:pointer;display:inline-flex;align-items:center;justify-content:center;}
+
+input[type="checkbox"] + span:before{content:'\e306';font-family:'newfont';font-size:18px;font-weight:normal;
+	width:24px;height:24px;text-align:center;display:inline-flex;align-items:center;justify-content:center;margin-right:12px;padding-top:2px;background:#fff;color:#e5edf4;border:1px solid #ACBFCE}
+input[type="checkbox"]:hover + span:before{/*color:rgba(255,255,255,1);*/}
+input[type="checkbox"]:checked + span:before{color:#fff;background:#1C549C;border:0;}
+
+.round input[type="checkbox"] + span:before{border-radius:50%;font-size:12px;padding-top:0.15em;}
+.round.large input[type="checkbox"] + span:before{font-size:15px;width:31px;height:31px;}
+
+
+input[type="radio"] + span{position:relative;position:relative;width:20px;height:20px;margin-right:10px;}
+input[type="radio"] + span:before{content:'';width:100%;height:100%;background:#fff;color:#e5edf4;border:1px solid #ACBFCE;border-radius:50%;display:inline-block;}
+input[type="radio"] + span:after{content:'';position:absolute;top:4px;left:4px;z-index:6;margin:0;display:inline-block;width:12px;height:12px;background:rgba(255,255,255,1);border-radius:50%;}
+input[type="radio"]:checked + span:before{border-color:#1C549C;}
+input[type="radio"]:checked + span:after{background:#1C549C;}
+
+
+
+
+/* 버튼형식 채크, 라디오 박스 */
+label.checkbox-btn{position:relative;}
+label.checkbox-btn input[type="checkbox"] + span:after{border:0 !important;display:none;}
+label.checkbox-btn input[type="checkbox"] + span:before{display:none;border:0;}
+label.checkbox-btn input[type="checkbox"] + span{width:150px;font-size:18px;padding:0 15px;height:50px;display:inline-flex;align-items:center;justify-content:center;
+	background:#EBF4FD;border:1px solid #2A62E1;color:#2A62E1;border-radius:12px;transition:all .2s ease-in-out;}
+label.checkbox-btn:hover input[type="checkbox"] + span{background:#fff;}
+label.checkbox-btn input[type="checkbox"]:checked + span{background:#255DE5;color:#fff;}
+
+
+
+label.radio-btn{position:relative;text-align:center;}
+label.radio-btn + label.radio-btn{margin-left:10px;}
+label.radio-btn input[type="radio"] + span:before{display:none;}
+label.radio-btn input[type="radio"] + span:after{display:none;}
+label.radio-btn input[type="radio"] + span{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;width:100%;height:42px;line-height:1em;padding:0 10px;color:#000;background:#fff;border:1px solid #002F54;border-radius:3px;transition:all .2s ease-in-out;}
+label.radio-btn input[type="radio"]:checked + span{background:#1C549C;color:#fff;}
+label.radio-btn input[type="radio"]:checked + span:before{background:rgba(0,0,0,0.15);}
+
+
+
+
+/* Checkbox 토글버튼 디자인 __________________________________________________ */
+[class*="toggle-"] input{display:none;}
+[class*="toggle-"] input, [class*="toggle-"] input:after, [class*="toggle-"] input:before, [class*="toggle-"] input *, [class*="toggle-"] input *:after, [class*="toggle-"] input *:before, [class*="toggle-"] input + span{box-sizing:border-box;}
+[class*="toggle-"] input::-moz-selection, [class*="toggle-"] input:after::-moz-selection, [class*="toggle-"] input:before::-moz-selection, [class*="toggle-"] input *::-moz-selection, [class*="toggle-"] input *:after::-moz-selection,
+[class*="toggle-"] input *:before::-moz-selection, [class*="toggle-"] input + span::-moz-selection, [class*="toggle-"] input::selection, [class*="toggle-"] input:after::selection, [class*="toggle-"] input:before::selection,
+[class*="toggle-"] input *::selection, [class*="toggle-"] input *:after::selection, [class*="toggle-"] input *:before::selection, [class*="toggle-"] input + span::selection{background:none;}
+[class*="toggle-"]{display:inline-block;position:relative;}
+[class*="toggle-"] input + span{outline:0;display:block;width:100%;height:34px;position:relative;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+[class*="toggle-"] input + span:after, [class*="toggle-"] input + span:before {content:"";position:relative;display:block;width:30px;height:100%;z-index:4;}
+[class*="toggle-"] input + span:after{left:0;}
+[class*="toggle-"] input + span:before {display:none;}
+[class*="toggle-"] input:checked + span:after {left:calc(100% - 30px);}
+
+
+/* toggle-light */
+.toggle-light{position:relative;overflow:hidden;width:70px;}
+.toggle-light .text-off{position:absolute;top:0;left:0;display:none;}
+.toggle-light input + span{background:#f0f0f0;border-radius:2em;padding:2px;transition:all .3s ease;}
+.toggle-light input + span:after{border-radius:50%;background:#fff;transition:all .2s ease-in-out;}
+.toggle-light input:checked + span{background:var(--mainColor);}
+.toggle-light .labelOn, .toggle-light .labelOff{position:absolute;top:0;width:40px;height:100%;display:flex;align-items:center;justify-content:center;z-index:2;font-size:15px;padding-top:0.1em;font-weight:normal;transition:all .2s ease-in-out;}
+.toggle-light .labelOn{left:-36px;opacity:0;color:#fff;}
+.toggle-light input:checked + span + .labelOn{left:4px;opacity:1;}
+.toggle-light .labelOff{left:26px;color:#a7aecb;}
+.toggle-light input:checked + span + span + .labelOff{left:80px;opacity:0;}
+
+
+
+
+
+
+/*──────────────── input file ────────────────*/
+.filebox{position:relative;display:flex;align-items:center;width:100%;}
+.filebox input[type="file"]{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+.filebox .upload-name{
+	flex:1;
+	height:74px;
+	font-size:16px !important;
+	font-weight:400;
+	font-family:'NanumSquare', sans-serif;
+	color:#777;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	cursor:default;
+	position:relative;
+	background:#F4F4F4;
+	-webkit-appearance:none;/* 네이티브 외형 감추기 */ -moz-appearance:none;appearance:none;}
+.filebox label.upload-btn{position:absolute;top:0;right:0;width:80px;height:100%;font-size:0;cursor:pointer;background:#EBF4FD;color:var(--mainColor);
+	display:inline-flex;align-items:center;justify-content:center;z-index:5;transition:all .2s ease-in-out;border:1px solid var(--mainColor);}
+.filebox label.upload-btn:hover{background:var(--mainColor);color:#fff;}
+.filebox label.upload-btn:before{content:'\e902';font-family:'codeidea';font-size:26px;}
+
+
+
+/*──────────────── 우편번호 찾기 ────────────────*/
+#postcode-layer{display:none;position:fixed;z-index:999;-webkit-overflow-scrolling:touch;}
+#postcode-layer .btnClose:before{content:'\28';position:absolute;top:-24px;right:-24px;z-index:3;width:36px;height:36px;background:#000;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;}

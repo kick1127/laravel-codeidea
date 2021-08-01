@@ -12,7 +12,7 @@ use Illuminate\Validation\ValidationException;
 class LoginController extends Controller
 {
     public function index()
-    {
+    {        
         return view('admin.login');
     }
 
@@ -20,7 +20,7 @@ class LoginController extends Controller
      * @throws ValidationException
      */
     public function store(LoginRequest $request): RedirectResponse
-    {
+    {        
         $request->authenticate('admin', '정확한 정보로 로그인 해주세요.');
 
         $request->session()->regenerate();

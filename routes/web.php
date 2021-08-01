@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\TermsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Front\ContactController;
+use App\Http\Controllers\Front\PortfolioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +26,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('index');
+// })->name('main');
+
+Route::name('front.')->group(function () {    
+     Route::view('/', 'index')->name('index');
+    //  Route::view('contact', 'front.contact')->name('contact');
+     Route::get('contact', [ContactController::class, 'index'])->name('contact');
+     Route::post('contact', [ContactController::class, 'store']);
+     Route::view('portfolio','front.portfolio')->name('portfolio');    
+     Route::view('pf-view', 'front.portfolio-view')->name('pfview');
+     Route::view('gallView', 'front.ajax.allView')->name('ajax-gallView');     
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {

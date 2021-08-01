@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+/*@import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');*/
+@import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
+@import url('https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css');
+@import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+
+[class*='noto']{font-family:'Noto Sans KR', sans-serif;}
+.noto100{font-weight:100;}
+.noto200{font-weight:200;}
+.noto300{font-weight:300;}
+.noto400{font-weight:400;}
+.noto500{font-weight:500;}
+.noto600{font-weight:600;}
+.noto700{font-weight:700;}
+.noto800{font-weight:800;}
+
+[class^="nanumSR"], [class*="nanumSR"]{font-family:'NanumSquareRound', sans-serif;}
+[class^="nanumSQ"], [class*="nanumSQ"]{font-family:'NanumSquare', sans-serif;}
+
+[class^="roboto"], [class*="roboto"]{font-family:'Roboto', sans-serif;}
+.roboto100{font-weight:100}
+.roboto300{font-weight:300}
+.roboto400{font-weight:400}
+.roboto500{font-weight:500}
+.roboto700{font-weight:700}
+.roboto900{font-weight:900}
+
+
+::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar-thumb{cursor:pointer;background:var(--mainColor);}
+::selection{background-color:var(--mainColor);color:#fff;}
+-webkit-::selection{background-color:var(--mainColor);color:#fff;}
+::-moz-selection{background-color:var(--mainColor);color:#fff;}
+
+:root{
+	--mainColor:rgba(42, 98, 225, 1); /*#2A62E1*/
+}
