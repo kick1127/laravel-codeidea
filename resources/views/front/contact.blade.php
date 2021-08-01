@@ -21,6 +21,19 @@
 		<div class="visual-img" style="">
 			<div class="imageHolder"><span class="ani-contact"></span><!--<img src="./img/contact/img01.png">--></div>
 		</div>
+		<div>
+			@if ( $errors->count() > 0 )
+				<div class="fs19 mfs18 mt40 mmt20" style="color:red;font-weight:bold">The following errors have occurred:
+					<ul> @foreach( $errors->all() as $message )
+						<li style="font-weight:normal;">&nbsp;&nbsp;&nbsp;&nbsp;{{ $message }}</li>
+						@endforeach
+					</ul>
+				</div>
+			@endif
+			@if(Session::has('success'))
+				<div class="fs19 mfs18 mt40 mmt20" style="color:green">	{{ Session::get('success') }} </div>
+			@endif
+		</div>
 
 		<div class="wr-wrap mt70">
 			<form id="contact-form" name="contact-form" action="{{ route('front.contact') }}" method="post">
@@ -89,12 +102,14 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="mt60 tcenter">			
 			<a href="#" class="btn blue large span200" id='btn_send'>SEND</a>
 		</div>
 	</div>
 </div>
+
+		
+
 
 
 <script>
