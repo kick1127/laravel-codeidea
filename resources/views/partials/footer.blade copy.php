@@ -13,8 +13,8 @@
 	</div>
 </footer>
 
-<script src="js/bodymovin/lottie.min.js"></script>
-<script src='<?=get_url('js/bodymovin/svgAnimation.js')?>'></script>
+<script src="{{ asset('front/js/bodymovin/lottie.min.js') }}"></script>
+<script src="{{ asset('front/js/bodymovin/svgAnimation.js') }}"></script>
 <script>
 wow = new WOW({
 	animateClass: 'animated',

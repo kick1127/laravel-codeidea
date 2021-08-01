@@ -23,8 +23,8 @@
 		<div class="imageHolder object16"><img src="./img/main/object16.png" style=""></div>
 		<div class="imageHolder object17"><img src="./img/main/object17.png" style=""></div>
 		<div class="imageHolder object18">
-			<a href="{{ route('front.portfolio') }}" class="btn red portfolio">PORTFOLIO</a>
-			<a href="{{ route('front.contact') }}" class="btn green contact">CONTACT</a>
+			<a href="portfolio.php" class="btn red portfolio">PORTFOLIO</a>
+			<a href="contact.php" class="btn green contact">CONTACT</a>
 		</div>
 	</section>
 	<?php } ?>

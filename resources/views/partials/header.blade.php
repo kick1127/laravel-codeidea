@@ -1,4 +1,5 @@
-<?php include_once('./lib/common.lib.php'); ?>
+<?php include_once('./front/lib/common.lib.php'); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +56,7 @@
 <header id="header">
 	<div class="header-container">
 		<div id="header-logo">
-			<a href="index.php" class="logo" alt="CODEIDEA">
+			<a href="{{ route('front.index') }}" class="logo" alt="CODEIDEA">
 				<span class="code"></span>
 				<span class="i"></span>
 				<span class="d"></span>
@@ -72,8 +73,8 @@
 				<span class="a"></span>
 			</a>
 			<ul class="nav_ul">
-				<li><a href="portfolio.php">Portfolio</a></li>
-				<li><a href="contact.php">Contact</a></li>
+				<li><a href="{{ route('front.portfolio') }}">Portfolio</a></li>
+				<li><a href="{{ route('front.contact') }}">Contact</a></li>
 			</ul>
 			<div class="footer mobile_only">
 				<p><span class="map">Seongsuil-ro 6-gil, Seongdong-gu, Seoul</span></p>

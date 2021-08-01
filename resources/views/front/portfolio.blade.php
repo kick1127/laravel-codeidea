@@ -1,6 +1,5 @@
-<?php
-include_once('./header.php');
-?>
+<?php include_once('./front/lib/common.lib.php'); ?>
+@include('partials.header')
 
 <div class="page-container">
 	
@@ -134,4 +133,4 @@ include_once('./header.php');
 
 </div>
 
-<?php include_once('./footer.php'); ?>
+@include('partials.footer')

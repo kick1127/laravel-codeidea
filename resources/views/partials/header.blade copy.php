@@ -1,4 +1,5 @@
-<?php include_once('./lib/common.lib.php'); ?>
+<?php include_once('./front/lib/common.lib.php'); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,35 +15,40 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
 	<!-- Styles -->
-	<link href="<?=get_url('./css/iconfont/newfont/styles.css')?>" rel="stylesheet" media="screen">
-	<link href="<?=get_url('./css/iconfont/codeidea/styles.css')?>" rel="stylesheet" media="screen">
-	<link href="<?=get_url('./js/wow/animate.css')?>" rel='stylesheet' type='text/css'>
-	<link href="<?=get_url('./css/root.css')?>" rel='stylesheet' type='text/css'>	
-	<link href="<?=get_url('./js/magnific-popup/magnific-popup.css')?>" rel="stylesheet">
-	<link href="<?=get_url('./js/swiper/swiper.min.css')?>" rel='stylesheet' type='text/css'>	
-	<link href="<?=get_url('./js/form/bootstrap-select/bootstrap-select.css')?>" rel='stylesheet' type='text/css'>
-	<link href='<?=get_url('./js/form/myform.css')?>' rel='stylesheet' type='text/css'>
-	<link href="<?=get_url('./css/styleDefault.css')?>" rel="stylesheet" media="screen">
+	
+	<link href="{{ asset('front/css/iconfont/newfont/styles.css') }}" rel="stylesheet" media="screen">	
+	<link href="{{ asset('front/css/iconfont/codeidea/styles.css') }}" rel="stylesheet" media="screen">
+	<link href="{{ asset('front/js/wow/animate.css') }}" rel='stylesheet' type='text/css'>
+	<link href="{{ asset('front/css/root.css') }}" rel='stylesheet' type='text/css'>	
+	<link href="{{ asset('front/js/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
+	<link href="{{ asset('front/js/swiper/swiper.min.css') }}" rel='stylesheet' type='text/css'>	
+	<link href="{{ asset('front/js/form/bootstrap-select/bootstrap-select.css') }}" rel='stylesheet' type='text/css'>
+	<link href="{{ asset('front/js/form/myform.css') }}" rel='stylesheet' type='text/css'>
+	<link href="{{ asset('front/css/styleDefault.css') }}" rel="stylesheet" media="screen">
+
 	<?php if ($chkMobile) { //모바일
-		echo '<link rel="stylesheet" href="'.get_url('./css/mobile.css').'">'.PHP_EOL;
+		echo '<link rel="stylesheet" href="{{ asset(\'front/css/mobile.css\') }}" >'.PHP_EOL;
+		echo "mobile";
 	} else {
-		echo '<link href="'.get_url('./css/style.css').'" rel="stylesheet" media="screen">';
+		echo '<link href="{{ asset(\'front/css/style.css\') }}" rel="stylesheet" media="screen">';
+		echo "not mobile";
 	} ?>
 
 	<!-- SCRIPTS -->
 	<script src="./js/jquery.min.js"></script>
-	<script src='<?=get_url('./js/wow/easing.js')?>'></script>
-	<script src='<?=get_url('./js/wow/wow.js')?>'></script>	
-	<script src="<?=get_url('./js/magnific-popup/jquery.magnific-popup.js')?>"></script>
-	<script src="<?=get_url('./js/swiper/swiper.min.js')?>"></script>
-	<script src='<?=get_url('./js/form/bootstrap-select/bootstrap.min.js')?>'></script>
-	<script src='<?=get_url('./js/form/bootstrap-select/bootstrap-select.js')?>'></script>
-	<script src='<?=get_url('./js/form/myform.js')?>'></script>
-	<script src="<?=get_url('./js/common.js')?>"></script>
+	<script src="{{ asset('front/js/wow/easing.js') }} "></script>
+	<script src="{{ asset('front/js/wow/wow.js') }}"></script>	
+	<script src="{{ asset('front/js/magnific-popup/jquery.magnific-popup.js') }}"></script>
+	<script src="{{ asset('front/js/swiper/swiper.min.js') }}"></script>
+	<script src="{{ asset('front/js/form/bootstrap-select/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('front/js/form/bootstrap-select/bootstrap-select.js') }}"></script>
+	<script src="{{ asset('front/js/form/myform.js') }}"></script>
+	<script src="{{ asset('front/js/common.js') }}"></script>
+	
 	<?php if ($chkMobile) { //모바일
-		echo '<script src="'.get_url('./js/myScript.mob.js').'"></script>';
+		echo '<script src="{{ asset(\'front/js/myScript.mob.js\') }}"></script>';
 	} else {
-		echo '<script src="'.get_url('./js/myScript.js').'"></script>';
+		echo '<script src="{{ asset(\'front/js/myScript.js\') }}"></script>';
 	} ?>	
 
 </head>

@@ -7,8 +7,8 @@
 			©CODEIDEA All Rights Reserved
 		</div>
 		<div class="footerNav pc_only">
-			<a href="portfolio.php">Portffolio</a>
-			<a href="contact.php">Contect</a>
+			<a href="{{ route('front.portfolio') }}">Portfolio</a>
+			<a href="{{ route('front.contact') }}">Contact</a>
 		</div>
 	</div>
 </footer>

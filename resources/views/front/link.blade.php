@@ -1,4 +1,4 @@
-<?php include_once('./header.php'); ?>
+@include('partials.header')
 
 <style>
 body{background:#fff;}
