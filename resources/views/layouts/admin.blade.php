@@ -105,6 +105,9 @@
                             <li class="@if($currentMenu == 'terms-marketing') active @endif">
                                 <a href="{{ route('admin.index') }}">메뉴관리</a>
                             </li>
+                            <li class="@if($currentMenu == 'contact-board') active @endif">
+                                <a href="{{ route('admin.contact-board.index') }}">고객요청관리</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

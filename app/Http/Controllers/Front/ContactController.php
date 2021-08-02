@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Log;
 
 class ContactController extends Controller
 {
-    //
     public function index()
     {
         return view('front.contact');
@@ -19,33 +18,37 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {        
-        // $request->validate([        
-        //     'service' => 'required',
-        //     'username' => 'required|string|max:255',
-        //     'co_name'     => 'required|string|max:255',
-        //     'email'    => 'required|string|email|max:255|unique:users',
-        //     'phone' => 'required',
-        //     'description' => 'required',
-        //     'file' => 'required',
-        // ]);
-        
-        $name = $request->uploadFile;
-        Log::channel('stderr')->info('----------------------------------------------in file: '.$name);    
-                
-        // if ($request->hasFile('file') && $request->file('file')->isValid()) {
-        //     $path = $request->file('file')->path();
-        //     Log::channel('stderr')->info('----------------------------------------------in file: '.$path);            
-        //     // $file_path = $request->file('file')->storeAs('documents', $request);
-        // } else {
-        //     Log::channel('stderr')->info('----------------------------------------------no file');            
+        $request->validate([        
+            'service' => 'required',
+            'username' => 'required|string|max:255',
+            'co_name'     => 'required|string|max:255',
+            'email'    => 'required|string|email|max:255|unique:users',
+            'phone' => 'required',
+            'description' => 'required|max:3000', //korean 1000 char
+            // 'file' => 'required',
+        ]);
+        // $input = $request->all();
+        // foreach($input as $arr) {
+            // Log::channel('stderr')->info('----------------------------------------------in file: '.$request->username);    
+            // Log::channel('stderr')->info('----------------------------------------------in file: '.$request->co_name);    
+            // Log::channel('stderr')->info('----------------------------------------------in file: '.$request->email);    
+            // Log::channel('stderr')->info('----------------------------------------------in file: '.$request->phone);    
+            // Log::channel('stderr')->info('----------------------------------------------in file: '.$request->service);    
+            // Log::channel('stderr')->info('----------------------------------------------in file: '.$request->description);    
         // }
 
-        // $user = User::create([
-        //     'username' => $request->username,
-        //     'name'     => $request->name,
-        //     'email'    => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]);
+            // TODO: file receiving
+            
+
+        DB::table('contact')->insert([
+            'submitted_at' => now(),
+            'username' => $request->username,
+            'co_name'  => $request->co_name,
+            'email'    => $request->email,
+            'phone'    => $request->phone,
+            'service'  => $request->service,
+            'description' => $request->description,
+        ]);
 
         return redirect()->back()->with(session()->flash('success', 'Your request is transfered successfully!'));
     }

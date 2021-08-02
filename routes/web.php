@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BoardController;
+use App\Http\Controllers\Admin\ContactBoardController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\FileController;
 use App\Http\Controllers\Admin\IndexController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\PortfolioController;
+use App\Http\Controllers\FileUpload;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,18 +28,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// })->name('main');
-
 Route::name('front.')->group(function () {    
-     Route::view('/', 'index')->name('index');
-    //  Route::view('contact', 'front.contact')->name('contact');
+     Route::view('/', 'index')->name('index');    
      Route::get('contact', [ContactController::class, 'index'])->name('contact');
-     Route::post('contact', [ContactController::class, 'store']);
+     Route::post('contact', [ContactController::class, 'store'])->name('upload');
      Route::view('portfolio','front.portfolio')->name('portfolio');    
      Route::view('pf-view', 'front.portfolio-view')->name('pfview');
-     Route::view('gallView', 'front.ajax.allView')->name('ajax-gallView');     
+     Route::view('gallView', 'front.ajax.allView')->name('ajax-gallView');        
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -61,13 +58,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('register', [UserController::class, 'store']);
         Route::get('my-info', [UserController::class, 'show'])->name('my-info');
         Route::get('password', [UserController::class, 'password'])->name('password');
-
-        Route::post('password', [UserController::class, 'updatePassword'])->name('update-password');
+        Route::post('password', [UserController::class, 'updatePassword'])->name('update-password');        
 
         Route::resource('member', MemberController::class);
         Route::resource('master', MasterController::class);
         Route::resource('terms', TermsController::class);
         Route::resource('board', BoardController::class);
+        Route::resource('contact-board', ContactBoardController::class);
         Route::resource('board.content', ContentController::class)->middleware('board');
 
         Route::resource('file', FileController::class);
