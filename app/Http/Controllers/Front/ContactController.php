@@ -25,9 +25,16 @@ class ContactController extends Controller
             'email'    => 'required|string|email|max:255|unique:users',
             'phone' => 'required',
             'description' => 'required|max:3000', //korean 1000 char
-            // 'file' => 'required',
+            'upload' => 'required',
         ]);
-        // $input = $request->all();
+        
+        $file = $request->upload;
+        $filename = $file->getClientOriginalName();
+        // $filepath = $file->path();
+        // $fileextension = $file->extension();
+
+        $store_file = $file->storeAs('contact', $filename);
+        // Log::channel('stderr')->info('---------------------------------------------- '.$store_file); 
         // foreach($input as $arr) {
             // Log::channel('stderr')->info('----------------------------------------------in file: '.$request->username);    
             // Log::channel('stderr')->info('----------------------------------------------in file: '.$request->co_name);    
@@ -37,9 +44,6 @@ class ContactController extends Controller
             // Log::channel('stderr')->info('----------------------------------------------in file: '.$request->description);    
         // }
 
-            // TODO: file receiving
-            
-
         DB::table('contact')->insert([
             'submitted_at' => now(),
             'username' => $request->username,
@@ -48,6 +52,7 @@ class ContactController extends Controller
             'phone'    => $request->phone,
             'service'  => $request->service,
             'description' => $request->description,
+            'file'     => $filename,
         ]);
 
         return redirect()->back()->with(session()->flash('success', 'Your request is transfered successfully!'));

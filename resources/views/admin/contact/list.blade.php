@@ -71,55 +71,11 @@
                                 <td>{{ $item->co_name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
-                                <td>
-                                    @php
-                                        $service_array = explode(",", $item->service);
-                                        $res = "";                                        
-                                    @endphp                                    
-                                    @foreach($service_array as $value)
-                                        @switch($value)
-                                            @case('web-dev')
-                                                웹개발
-                                                @break
-                                            @case('app-dev')
-                                                앱개발
-                                                @break
-                                            @case('web-design')
-                                                웹디자인
-                                                @break
-                                            @case('app-design')
-                                                앱디자인
-                                                @break
-                                            @case('si')
-                                                유지보수
-                                                @break
-                                            @case('viral')
-                                                바이럴마케팅
-                                                @break
-                                            @case('banner_ad')
-                                                배너광고
-                                                @break
-                                            @case('video_ad')
-                                                영상광고
-                                                @break
-                                            @case('influencer')
-                                                인플루언서
-                                                @break
-                                            @case('digital_contents')
-                                                디지털콘텐츠
-                                                @break
-                                            @case('ecommerce')
-                                                이커머스
-                                                @break
-                                            @case('etc')
-                                                etc
-                                                @break
-                                        @endswitch
-                                        <br>                                        
-                                    @endforeach                                    
-                                </td>
+                                <td>{{ $item->service }}</td>
                                 <td>{{ $item->description }}</td>
-                                <td>{{ $item->file }}</td>
+                                <td>
+                                    <a href="{{ route('admin.contact-download', $item->file) }}" > {{ $item->file }} </a>
+                                </td>
                                 <td>{{ getDateString($item->submitted_at) }}</td>                                
                             </tr>
                         @endforeach
@@ -139,6 +95,6 @@
 @endsection
 
 @push('scripts')
-    <script type="text/javascript" src="{{ asset('/js/admin/search.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ asset('/js/admin/search.js') }}"></script> -->
 @endpush
 

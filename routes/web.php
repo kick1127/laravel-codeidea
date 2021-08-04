@@ -64,8 +64,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('master', MasterController::class);
         Route::resource('terms', TermsController::class);
         Route::resource('board', BoardController::class);
-        Route::resource('contact-board', ContactBoardController::class);
         Route::resource('board.content', ContentController::class)->middleware('board');
+
+        Route::resource('contact-board', ContactBoardController::class);
+        Route::get('download/{file}', [ContactBoardController::class, 'download'])->name('contact-download');
+        // Route::get('contact-board/{file}', 'ContactBoardController@download')->name('contact-download');
 
         Route::resource('file', FileController::class);
         Route::get('download/{originalName}/{filename}/{mimetype}',

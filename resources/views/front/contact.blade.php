@@ -21,6 +21,8 @@
 		<div class="visual-img" style="">
 			<div class="imageHolder"><span class="ani-contact"></span><!--<img src="./img/contact/img01.png">--></div>
 		</div>
+
+		<!-- controller return handling -->
 		<div>
 			@if ( $errors->count() > 0 )
 				<div class="fs19 mfs18 mt40 mmt20" style="color:red;font-weight:bold">The following errors have occurred:
@@ -42,17 +44,17 @@
 				<div class="wr-list">
 					<div class="wr-head">01. 어떤 서비스를 필요로 하신가요?</div>
 					<div class="wr-list-con">
-						<input type="checkbox" class="checkbox-btn" name="chkbox" value="web-dev" data-label="웹개발">
-						<input type="checkbox" class="checkbox-btn" name="chkbox" value="app-dev" data-label="앱개발">
-						<input type="checkbox" class="checkbox-btn" name="chkbox" value="web-design" checked data-label="웹디자인">
-						<input type="checkbox" class="checkbox-btn" name="chkbox" value="app-design" data-label="앱디자인">
-						<input type="checkbox" class="checkbox-btn" name="chkbox" value="si" data-label="유지보수">
-						<input type="checkbox" class="checkbox-btn" name="chkbox" value="viral" data-label="바이럴마케팅">
-						<input type="checkbox" class="checkbox-btn" name="chkbox" value="banner_ad" data-label="배너광고">
-						<input type="checkbox" class="checkbox-btn" name="chkbox" value="video_ad" checked data-label="영상광고">
-						<input type="checkbox" class="checkbox-btn" name="chkbox" value="influencer" data-label="인플루언서">
-						<input type="checkbox" class="checkbox-btn" name="chkbox" value="digital_contents" data-label="디지털콘텐츠">
-						<input type="checkbox" class="checkbox-btn" name="chkbox" value="ecommerce" data-label="이커머스">
+						<input type="checkbox" class="checkbox-btn" name="chkbox" value="웹개발" data-label="웹개발">
+						<input type="checkbox" class="checkbox-btn" name="chkbox" value="앱개발" data-label="앱개발">
+						<input type="checkbox" class="checkbox-btn" name="chkbox" value="웹디자인" checked data-label="웹디자인">
+						<input type="checkbox" class="checkbox-btn" name="chkbox" value="앱디자인" data-label="앱디자인">
+						<input type="checkbox" class="checkbox-btn" name="chkbox" value="유지보수" data-label="유지보수">
+						<input type="checkbox" class="checkbox-btn" name="chkbox" value="바이럴마케팅" data-label="바이럴마케팅">
+						<input type="checkbox" class="checkbox-btn" name="chkbox" value="배너광고" data-label="배너광고">
+						<input type="checkbox" class="checkbox-btn" name="chkbox" value="영상광고" checked data-label="영상광고">
+						<input type="checkbox" class="checkbox-btn" name="chkbox" value="인플루언서" data-label="인플루언서">
+						<input type="checkbox" class="checkbox-btn" name="chkbox" value="디지털콘텐츠" data-label="디지털콘텐츠">
+						<input type="checkbox" class="checkbox-btn" name="chkbox" value="이커머스" data-label="이커머스">
 						<input type="checkbox" class="checkbox-btn" name="chkbox" value="etc" data-label="etc">
 						<input type="hidden" name="service" id="service" value="">
 					</div>
@@ -92,7 +94,7 @@
 				<div class="wr-list ">
 					<div class="wr-list-con">
 						<p class="mb10 mmb5"><span class="mfs18">첨부파일</span><span class="color-gray ml5 pc_only">(이력서, 자기소개서, 디자이너 포트폴리오는 필수입니다. 여러개의 파일은 압축해서 100MB이하 ZIP파일로 올려주세요)</span></p>					
-						<input type="file" name="upload" id="upload" />
+						<input type="file" name="upload"/>
 						<p class="color-gray mobile_only mt10">(이력서, 자기소개서, 디자이너 포트폴리오는 필수입니다. 여러개의 파일은 압축해서 100MB이하 ZIP파일로 올려주세요)</p>						
 					</div>
 				</div>
@@ -127,10 +129,6 @@ $(document).on("mousemove", function(event) {
 	);
 });
 <?php } ?>
-
-var filename = "";
-
-
 $(document).ready(function(){
 	//file
 	$('input[type="file"]:not(.default)').each(function(index) {
@@ -143,9 +141,9 @@ $(document).ready(function(){
 		$(this).addClass('upload-hidden');
 		$(this).on('change', function(){ // 값이 변경되면
 			if(window.FileReader){ // modern browser
-				filename = $(this)[0].files[0].name;
+				var filename = $(this)[0].files[0].name;
 			} else { // old IE
-				filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+				var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
 			} // 추출한 파일명 삽입
 			$(this).siblings('.upload-name').val(filename);			
 		});
@@ -154,61 +152,19 @@ $(document).ready(function(){
 
 $(document).ready(function() {	
 	$('#btn_send').click(function() {
+		$("input[type=text]").css("border-color","black");
+		$("input[type=textarea]").css("border-color","black");
+		$("input[type=checkbox]").css("border-color","black");
+		$("input[type=file]").css("border-color","black");
 		if(check_values()) {			
-			// //preventDefault 는 기본으로 정의된 이벤트를 작동하지 못하게 하는 메서드이다. submit을 막음 
-			// event.preventDefault();          
-			// // Get form         
-			// var form = $('#fileUploadForm')[0];  	    
-			// // Create an FormData object          
-			// var data = new FormData(form);  	   
-			// // disabled the submit button         
-			// $("#contact-form").prop("disabled", true);   
-
-			// $.ajax({             
-			// 	type: "POST",          
-			// 	enctype: 'multipart/form-data',  
-			// 	url: "/document/upload",        
-			// 	data: data,          
-			// 	processData: false,    
-			// 	contentType: false,      
-			// 	cache: false,           
-			// 	timeout: 600000,       
-			// 	success: function (data) { 
-			// 		alert("complete");           
-			// 		$("#contact-form").prop("disabled", false);      
-			// 	},          
-			// 	error: function (e) {  
-			// 		console.log("ERROR : ", e);     
-			// 		$("#contact-form").prop("disabled", false);    
-			// 		alert("fail");      
-			// 		}     
-			// });  			
-
 			 $('#contact-form').submit();			
-			// $('#contact-form').submit(function(e) {
-			// 	e.preventDefault();    
-			// 	var formData = new FormData(this);
-
-			// 	$.ajax({
-			// 		url: window.location.pathname,
-			// 		type: 'POST',
-			// 		data: formData,
-			// 		success: function (data) {
-			// 			alert(data)
-			// 		},
-			// 		cache: false,
-			// 		contentType: false,
-			// 		processData: false
-			// 	});
-			// });		
 		}
 	});
 
 	return false;
 });
 
-function check_values() {
-	// console.log("chek_values()");
+function check_values() {	
 	if ($("input:checkbox[name='chkbox']").is(":checked")==false) {
 		alert("1개 이상의 서비스를 선택해주세요.");
 		return false;
@@ -220,47 +176,53 @@ function check_values() {
 		});
 		$('#service').val(checkbox_list);
 		// alert($('#service').val());
-	}
-	
-	$file2 = document.getElementById("upload");
-	
-	// if( document.getElementById("upload").files.length == 0 ){
-	// 	console.log("no files selected");
-	// } else {
-	// 	console.log("file exist");
-	// }
-	
-	// if ($.trim($("input[name=username]").val()).length < 1) {
-	// 	alert("이름을 입력해주세요.");
-	// 	return false;			
-	// }				
-	// if ($.trim($("input[name=co_name").val()).length < 1) {
-	// 	alert("회사명을 입력해주세요.");
-	// 	return false;			
-	// }
-	// if ($.trim($("input[name=email]").val()).length < 1) {
-	// 	alert("이메일을 입력해주세요.");
-	// 	return false;			
-	// }
-	// if ($.trim($("input[name=phone]").val()).length < 1) {
-	// 	alert("연락처를 입력해주세요.");
-	// 	return false;			
-	// }
-	// if ($.trim($("#description").val()).length < 1) {
-	// 	alert("요청 및 문의 사항을 기입해주세요.");
-	// 	return false;			
-	// }
-	// //TODO: find getting object method to check the file
-	// if (filename=="") {
-	// 	alert("파일을 첨부해주세요.");
-	// 	return false;			
-	// }	
-	// if ($("input:checkbox[name='must']").is(":checked")==false) {
-	// 	alert("개인정보 처리방침에 동의해주세요.");
-	// 	return false;
-	// }
+	}	
 		
-	return true;	
+	if ($.trim($("input[name=username]").val()).length < 1) {
+		alert("이름을 입력해주세요.");
+		$("input[name=username]").focus();
+		$("input[name=username]").css({"border-color": "#FF0000"});
+		return false;			
+	}				
+	if ($.trim($("input[name=co_name").val()).length < 1) {
+		alert("회사명을 입력해주세요.");
+		$("input[name='co_name']").focus();
+		$("input[name=co_name]").css({"border-color": "#FF0000"});
+		return false;			
+	}
+	if ($.trim($("input[name=email]").val()).length < 1) {
+		alert("이메일을 입력해주세요.");
+		$("input[name='email']").focus();
+		$("input[name=email]").css({"border-color": "#FF0000"});
+		return false;			
+	}
+	if ($.trim($("input[name=phone]").val()).length < 1) {
+		alert("연락처를 입력해주세요.");
+		$("input[name='phone']").focus();
+		$("input[name=phone]").css({"border-color": "#FF0000"});
+		return false;			
+	}
+	if ($.trim($("#description").val()).length < 1) {
+		alert("요청 및 문의 사항을 기입해주세요.");
+		$("#description").focus();
+		$("#description").css({"border-color": "#FF0000"});
+		return false;			
+	}		
+	// console.log($("input[type=file]").val());
+	if($("input[type=file]").val().length < 1 ){			
+		alert("파일을 첨부해주세요.");
+		$(".upload-name").focus();
+		$(".upload-name").css({"border-color": "#FF0000"});
+		return false;			
+	}	
+	if ($("input:checkbox[name='must']").is(":checked")==false) {
+		alert("개인정보 처리방침에 동의해주세요.");
+		$("input:checkbox[name='must']").focus();
+		$("input:checkbox[name='must']").css({"border-color": "#FF0000"});
+		return false;
+	}
+		
+	return true;		
 }
 </script>
 
