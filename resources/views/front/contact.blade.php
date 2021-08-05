@@ -3,16 +3,12 @@
 
 <div class="page-container header-transparent">
 	<div id="write">			
-		<p class="fs64 mfs30 mt120 mmt50">
-			반갑습니다.<br/>
-			<span class="pc_only">저희는 </span>코드 아이디어 입니다.
-		</p>
 		<p class="fs19 mfs18 mt40 mmt20">
-			안녕하세요. 코드 아이디어 입니다. <br class="mobile_only">저희는 신생 스타트업으로 긍정적이고 진취적인 마인드를 가지고 일합니다.<br/>
-			간단한 문의사항들 적어주시고 문희사항들은 저희 인포쪽으로 문의주세요.
+			이전보다 나은 코드를 생각합니다.<br/>
+			코드를 생각하는 사람들
 		</p>
 		<p class="fs18 mt40" style="line-height:2em;">
-			<span>Co : www.code-idear.com</span><br class="mobile_only">
+			<span>Co : codeidea.dev</span><br class="mobile_only">
 			<span class="ml40 mml0">Co Number : 508-20-64700</span><br class="mobile_only">
 			<span class="ml40 mml0">Tel : 010-5440-5414</span><br class="mobile_only">
 			<span class="ml40 mml0">Email : huchiy@gmail.com</span>

@@ -3,8 +3,8 @@
 <!-- Footer -->
 <footer id="footer" class="footer">
 	<div class="footer-container">
-		<div class="footerCon">
-			©CODEIDEA All Rights Reserved
+		<div class="footerCon" style="font-size:12px;">
+			©CODEIDEA <?=date('Y')?> All Rights Reserved<br>Co : codeidea.dev&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Co Number : 508-20-64700&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Tel : 010-5440-5414&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Email : huchiy@gmail.com&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Address : 18-9, Yeonnam-ro 3-gil, Mapo-gu, Seoul
 		</div>
 		<div class="footerNav pc_only">
 			<a href="portfolio.php">Portffolio</a>
